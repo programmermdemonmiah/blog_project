@@ -1,0 +1,206 @@
+{% extends "layout/base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="bg-dark text-white py-5">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold custom-title">Welcome to My Blog</h1>
+        <p class="lead">
+            Learn Django, Python, Web Development, Programming and Technology.
+        </p>
+        <a href="#" class="btn btn-primary btn-lg">Read Latest Posts</a>
+    </div>
+</section>
+
+<!-- Blog Section -->
+<section class="py-5">
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Blog Posts -->
+            <div class="col-lg-8">
+
+                <h2 class="mb-4">Latest Articles</h2>
+
+                <div class="row g-4">
+
+                    <!-- Card 1 -->
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://picsum.photos/600/400?1" class="card-img-top" alt="">
+                            <div class="card-body">
+                                <span class="badge bg-primary mb-2">Django</span>
+
+                                <h5 class="card-title">
+                                    Getting Started with Django
+                                </h5>
+
+                                <p class="card-text">
+                                    Learn how to build your first Django project from scratch.
+                                </p>
+
+                                <a href="#" class="btn btn-outline-primary">
+                                    Read More
+                                </a>
+                            </div>
+
+                            <div class="card-footer text-muted">
+                                June 28, 2026
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://picsum.photos/600/400?2" class="card-img-top" alt="">
+                            <div class="card-body">
+                                <span class="badge bg-success mb-2">Python</span>
+
+                                <h5 class="card-title">
+                                    Python Tips & Tricks
+                                </h5>
+
+                                <p class="card-text">
+                                    Improve your coding skills with useful Python techniques.
+                                </p>
+
+                                <a href="#" class="btn btn-outline-success">
+                                    Read More
+                                </a>
+                            </div>
+
+                            <div class="card-footer text-muted">
+                                June 25, 2026
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://picsum.photos/600/400?3" class="card-img-top" alt="">
+                            <div class="card-body">
+                                <span class="badge bg-warning text-dark mb-2">
+                                    HTML
+                                </span>
+
+                                <h5 class="card-title">
+                                    HTML for Beginners
+                                </h5>
+
+                                <p class="card-text">
+                                    Understand HTML structure and build responsive webpages.
+                                </p>
+
+                                <a href="#" class="btn btn-outline-warning">
+                                    Read More
+                                </a>
+                            </div>
+
+                            <div class="card-footer text-muted">
+                                June 20, 2026
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://picsum.photos/600/400?4" class="card-img-top" alt="">
+                            <div class="card-body">
+                                <span class="badge bg-danger mb-2">
+                                    Bootstrap
+                                </span>
+
+                                <h5 class="card-title">
+                                    Bootstrap Crash Course
+                                </h5>
+
+                                <p class="card-text">
+                                    Design beautiful responsive websites using Bootstrap 5.
+                                </p>
+
+                                <a href="#" class="btn btn-outline-danger">
+                                    Read More
+                                </a>
+                            </div>
+
+                            <div class="card-footer text-muted">
+                                June 18, 2026
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+
+                <!-- Search -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header">
+                        Search
+                    </div>
+
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Search..."
+                            >
+
+                            <button class="btn btn-primary">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categories -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header">
+                        Categories
+                    </div>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Python</li>
+                        <li class="list-group-item">Django</li>
+                        <li class="list-group-item">HTML</li>
+                        <li class="list-group-item">CSS</li>
+                        <li class="list-group-item">Bootstrap</li>
+                        <li class="list-group-item">JavaScript</li>
+                    </ul>
+                </div>
+
+                <!-- About -->
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        About
+                    </div>
+
+                    <div class="card-body">
+                        <p>
+                            This blog shares tutorials on Django, Python,
+                            Web Development and Programming.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

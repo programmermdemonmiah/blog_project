@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "layout/partials/__head.html" %}
+
+    {% include "layout/bundle/__style.html" %}
+</head>
+<body>
+
+    {% include "layout/partials/__header.html" %}
+
+    <main>
+        {% block content %}
+
+        {% endblock %}
+    </main>
+
+    {% include "layout/partials/__footer.html" %}
+
+
+    {% include "layout/bundle/__js.html" %}
+
+
+</body>
+</html>
