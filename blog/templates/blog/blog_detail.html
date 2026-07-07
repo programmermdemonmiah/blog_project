@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="blog-detail-image">
-                    <img src="https://picsum.photos/800/400?{{ post.id }}" alt="{{ post.title }}" class="img-fluid rounded-4">
+                    <img src="{% if post.image %}{{ post.image.url }}{% else %}https://picsum.photos/800/400?{{ post.id }}{% endif %}" alt="{{ post.title }}" class="img-fluid rounded-4">
                 </div>
 
                 <div class="blog-detail-content">
@@ -40,7 +40,7 @@
                         {% for rp in recent_posts %}
                         <div class="recent-post-item">
                             <div class="recent-post-img">
-                                <img src="https://picsum.photos/60/60?{{ rp.id }}" alt="{{ rp.title }}">
+                                <img src="{% if rp.image %}{{ rp.image.url }}{% else %}https://picsum.photos/60/60?{{ rp.id }}{% endif %}" alt="{{ rp.title }}">
                             </div>
                             <div class="recent-post-info">
                                 <a href="{% url 'blog:blog_detail' rp.slug %}" class="recent-post-title">{{ rp.title }}</a>

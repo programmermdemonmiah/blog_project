@@ -112,7 +112,7 @@
             <div class="col-lg-4 col-md-6">
                 <article class="blog-card">
                     <div class="blog-card-image">
-                        <img src="https://picsum.photos/600/400?p={{ forloop.counter }}" alt="{{ post.title }}">
+                        <img src="{% if post.image %}{{ post.image.url }}{% else %}https://picsum.photos/600/400?p={{ forloop.counter }}{% endif %}" alt="{{ post.title }}">
                         <div class="blog-card-overlay">
                             <a href="{% url 'blog:blog_detail' post.slug %}" class="btn btn-read">Read Article</a>
                         </div>
