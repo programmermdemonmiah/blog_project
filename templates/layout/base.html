@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% include "layout/partials/__head.html"  with title=title %}
-
+    {% include "layout/partials/__head.html" with title=title %}
     {% include "layout/bundle/__style.html" %}
     {% block styles %}{% endblock %}
 </head>
@@ -16,10 +15,7 @@
     </main>
 
     {% include "layout/partials/__footer.html" %}
-
-
     {% include "layout/bundle/__js.html" %}
-
     {% block scripts %}{% endblock %}
 </body>
 </html>

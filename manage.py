@@ -6,7 +6,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'blog_project.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core_project.settings')
     os.environ['DJANGO_RUNSERVER_HIDE_WARNING'] = 'true'
     try:
         # pyrefly: ignore [missing-import]

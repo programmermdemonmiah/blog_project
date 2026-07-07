@@ -1,205 +1,167 @@
 {% extends "layout/base.html" %}
-
-{% block title %}
-Home
-{% endblock %}
+{% load static %}
 
 {% block content %}
 
-<!-- Hero Section -->
-<section class="bg-dark text-white py-5">
-    <div class="container text-center">
-        <h1 class="display-4 fw-bold custom-title">Welcome to My Blog</h1>
-        <p class="lead">
-            Learn Django, Python, Web Development, Programming and Technology.
-        </p>
-        <a href="#" class="btn btn-primary btn-lg">Read Latest Posts</a>
+<section class="hero-section">
+    <div class="hero-bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+    <div class="container">
+        <div class="row align-items-center min-vh-80">
+            <div class="col-lg-7">
+                <span class="hero-badge">Welcome to DeepVerse Lab</span>
+                <h1 class="hero-title">
+                    Discover Stories,<br>
+                    <span class="highlight">Ideas &amp; Expertise</span>
+                </h1>
+                <p class="hero-text">
+                    Dive into a world of knowledge about Django, Python, web development,
+                    and modern technology. Learn, grow, and build amazing things.
+                </p>
+                <div class="hero-actions">
+                    <a href="{% url 'blog:blog_list' %}" class="btn btn-hero-primary">
+                        Explore Articles <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                    <a href="/about/" class="btn btn-hero-secondary">
+                        Learn More <i class="fas fa-info-circle ms-2"></i>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">Articles</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Topics</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1K+</span>
+                        <span class="stat-label">Readers</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 d-none d-lg-block">
+                <div class="hero-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=600&fit=crop" alt="Blog" class="hero-image">
+                    <div class="hero-image-card card-1">
+                        <i class="fas fa-code"></i>
+                        <span>Django</span>
+                    </div>
+                    <div class="hero-image-card card-2">
+                        <i class="fas fa-python"></i>
+                        <span>Python</span>
+                    </div>
+                    <div class="hero-image-card card-3">
+                        <i class="fas fa-database"></i>
+                        <span>SQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
-<!-- Blog Section -->
-<section class="py-5">
+<section class="features-section py-5">
     <div class="container">
-
-        <div class="row">
-
-            <!-- Blog Posts -->
-            <div class="col-lg-8">
-
-                <h2 class="mb-4">Latest Articles</h2>
-
-                <div class="row g-4">
-
-                    <!-- Card 1 -->
-                    <div class="col-md-6">
-                        <div class="card h-100 shadow-sm">
-                            <img src="https://picsum.photos/600/400?1" class="card-img-top" alt="">
-                            <div class="card-body">
-                                <span class="badge bg-primary mb-2">Django</span>
-
-                                <h5 class="card-title">
-                                    Getting Started with Django
-                                </h5>
-
-                                <p class="card-text">
-                                    Learn how to build your first Django project from scratch.
-                                </p>
-
-                                <a href="#" class="btn btn-outline-primary">
-                                    Read More
-                                </a>
-                            </div>
-
-                            <div class="card-footer text-muted">
-                                June 28, 2026
-                            </div>
-                        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
                     </div>
-
-                    <!-- Card 2 -->
-                    <div class="col-md-6">
-                        <div class="card h-100 shadow-sm">
-                            <img src="https://picsum.photos/600/400?2" class="card-img-top" alt="">
-                            <div class="card-body">
-                                <span class="badge bg-success mb-2">Python</span>
-
-                                <h5 class="card-title">
-                                    Python Tips & Tricks
-                                </h5>
-
-                                <p class="card-text">
-                                    Improve your coding skills with useful Python techniques.
-                                </p>
-
-                                <a href="#" class="btn btn-outline-success">
-                                    Read More
-                                </a>
-                            </div>
-
-                            <div class="card-footer text-muted">
-                                June 25, 2026
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="col-md-6">
-                        <div class="card h-100 shadow-sm">
-                            <img src="https://picsum.photos/600/400?3" class="card-img-top" alt="">
-                            <div class="card-body">
-                                <span class="badge bg-warning text-dark mb-2">
-                                    HTML
-                                </span>
-
-                                <h5 class="card-title">
-                                    HTML for Beginners
-                                </h5>
-
-                                <p class="card-text">
-                                    Understand HTML structure and build responsive webpages.
-                                </p>
-
-                                <a href="#" class="btn btn-outline-warning">
-                                    Read More
-                                </a>
-                            </div>
-
-                            <div class="card-footer text-muted">
-                                June 20, 2026
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 4 -->
-                    <div class="col-md-6">
-                        <div class="card h-100 shadow-sm">
-                            <img src="https://picsum.photos/600/400?4" class="card-img-top" alt="">
-                            <div class="card-body">
-                                <span class="badge bg-danger mb-2">
-                                    Bootstrap
-                                </span>
-
-                                <h5 class="card-title">
-                                    Bootstrap Crash Course
-                                </h5>
-
-                                <p class="card-text">
-                                    Design beautiful responsive websites using Bootstrap 5.
-                                </p>
-
-                                <a href="#" class="btn btn-outline-danger">
-                                    Read More
-                                </a>
-                            </div>
-
-                            <div class="card-footer text-muted">
-                                June 18, 2026
-                            </div>
-                        </div>
-                    </div>
-
+                    <h4>In-Depth Tutorials</h4>
+                    <p>Step-by-step guides that take you from beginner to proficient in web development.</p>
                 </div>
-
             </div>
-
-            <!-- Sidebar -->
-            <div class="col-lg-4">
-
-                <!-- Search -->
-                <div class="card shadow-sm mb-4">
-                    <div class="card-header">
-                        Search
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
                     </div>
-
-                    <div class="card-body">
-                        <div class="input-group">
-                            <input
-                                type="text"
-                                class="form-control"
-                                placeholder="Search..."
-                            >
-
-                            <button class="btn btn-primary">
-                                Search
-                            </button>
-                        </div>
-                    </div>
+                    <h4>Practical Examples</h4>
+                    <p>Real-world code examples and projects that you can use in your own work.</p>
                 </div>
-
-                <!-- Categories -->
-                <div class="card shadow-sm mb-4">
-                    <div class="card-header">
-                        Categories
-                    </div>
-
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Python</li>
-                        <li class="list-group-item">Django</li>
-                        <li class="list-group-item">HTML</li>
-                        <li class="list-group-item">CSS</li>
-                        <li class="list-group-item">Bootstrap</li>
-                        <li class="list-group-item">JavaScript</li>
-                    </ul>
-                </div>
-
-                <!-- About -->
-                <div class="card shadow-sm">
-                    <div class="card-header">
-                        About
-                    </div>
-
-                    <div class="card-body">
-                        <p>
-                            This blog shares tutorials on Django, Python,
-                            Web Development and Programming.
-                        </p>
-                    </div>
-                </div>
-
             </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Community Driven</h4>
+                    <p>Join a growing community of developers sharing knowledge and helping each other.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<section class="featured-posts-section py-5">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <span class="section-badge">Latest Articles</span>
+            <h2 class="section-title">Featured <span class="highlight">Posts</span></h2>
+            <p class="section-text">Hand-picked articles to help you level up your skills.</p>
         </div>
 
+        <div class="row g-4">
+            {% for post in posts|slice:":3" %}
+            <div class="col-lg-4 col-md-6">
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <img src="https://picsum.photos/600/400?p={{ forloop.counter }}" alt="{{ post.title }}">
+                        <div class="blog-card-overlay">
+                            <a href="{% url 'blog:blog_detail' post.slug %}" class="btn btn-read">Read Article</a>
+                        </div>
+                    </div>
+                    <div class="blog-card-body">
+                        <div class="blog-card-meta">
+                            <span class="blog-date"><i class="far fa-calendar-alt"></i> {{ post.created_at|date:"M d, Y" }}</span>
+                        </div>
+                        <h3 class="blog-card-title">
+                            <a href="{% url 'blog:blog_detail' post.slug %}">{{ post.title }}</a>
+                        </h3>
+                        <p class="blog-card-text">{{ post.short_description|truncatewords:15 }}</p>
+                        <a href="{% url 'blog:blog_detail' post.slug %}" class="blog-card-link">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center py-5">
+                <div class="empty-state">
+                    <i class="fas fa-newspaper empty-icon"></i>
+                    <h3>No Posts Yet</h3>
+                    <p class="text-muted">Check back soon for amazing content!</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if posts|length > 3 %}
+        <div class="text-center mt-4">
+            <a href="{% url 'blog:blog_list' %}" class="btn btn-view-all">
+                View All Articles <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<section class="cta-section py-5">
+    <div class="container">
+        <div class="cta-card text-center">
+            <h2 class="cta-title">Ready to Start Learning?</h2>
+            <p class="cta-text">Join our community and get access to all articles, tutorials, and resources.</p>
+            <div class="cta-actions">
+                <a href="{% url 'authentication:register' %}" class="btn btn-cta-primary">Get Started Free</a>
+                <a href="{% url 'business:contact_us' %}" class="btn btn-cta-secondary">Contact Us</a>
+            </div>
+        </div>
     </div>
 </section>
 
