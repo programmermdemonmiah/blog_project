@@ -7,6 +7,7 @@ class Blog(models.Model):
     short_description = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, blank=False, null=False)
     content = RichTextField()
+    image = models.ImageField(upload_to="blog/", null=True, blank=True)
     status = models.CharField(choices={
         'Published': 'Published',
         'Unpublished': 'Unpublished'
