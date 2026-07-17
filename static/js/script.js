@@ -29,3 +29,12 @@ document.addEventListener('DOMContentLoaded', function () {
         return new bootstrap.Tooltip(el);
     });
 });
+
+function slideCategories(direction) {
+    const slider = document.getElementById('categoriesSlider');
+    if (!slider) return;
+    const card = slider.querySelector('.category-slide-card');
+    if (!card) return;
+    const scrollAmount = card.offsetWidth + 24;
+    slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+}

@@ -1,13 +1,16 @@
 from django.core.management.base import BaseCommand
 from authentication.models import User
-from blog.models import Blog
+from blog.models import Blog, Category
 
+
+CATEGORIES = ['Python', 'Django', 'Web Development', 'Database', 'HTML/CSS', 'API']
 
 BLOG_POSTS = [
     {
         'title': 'Getting Started with Django: A Comprehensive Guide',
         'short_description': 'Learn how to build your first Django web application from scratch with this step-by-step tutorial for beginners.',
         'slug': 'getting-started-with-django',
+        'category': 'Django',
         'content': '''Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes care of much of the hassle of web development, so you can focus on writing your app without needing to reinvent the wheel.
 
 In this comprehensive guide, we will walk through the process of setting up a Django project from scratch. We will cover installation, project structure, views, URLs, templates, models, and the admin interface.
@@ -23,6 +26,7 @@ This will create a new directory with the project structure. Let us explore each
         'title': 'Python Tips & Tricks Every Developer Should Know',
         'short_description': 'Boost your productivity with these essential Python techniques and best practices.',
         'slug': 'python-tips-tricks',
+        'category': 'Python',
         'content': '''Python is one of the most versatile and powerful programming languages available today. Whether you are a beginner or an experienced developer, there is always something new to learn.
 
 Here are some essential Python tips and tricks that will help you write cleaner, more efficient code.
@@ -46,6 +50,7 @@ These tips will help you become a more effective Python developer.''',
         'title': 'Building Responsive Websites with Bootstrap 5',
         'short_description': 'Master the art of creating beautiful, responsive web layouts using Bootstrap 5 framework.',
         'slug': 'bootstrap-5-crash-course',
+        'category': 'Web Development',
         'content': '''Bootstrap 5 is the latest version of the world's most popular CSS framework. It makes front-end web development faster and easier by providing a comprehensive set of pre-built components and utilities.
 
 In this crash course, we will cover the essential features of Bootstrap 5 that you need to know to build responsive websites.
@@ -61,6 +66,7 @@ One of the biggest changes in Bootstrap 5 is the removal of jQuery dependency. A
         'title': 'Understanding HTML5 Semantic Elements',
         'short_description': 'Learn how to use HTML5 semantic elements to create well-structured and accessible web pages.',
         'slug': 'html5-semantic-elements',
+        'category': 'HTML/CSS',
         'content': '''HTML5 introduced a set of semantic elements that help define the structure of a web page more meaningfully. These elements not only make your code more readable but also improve accessibility and SEO.
 
 Semantic elements clearly describe their meaning to both the browser and the developer. For example, header, nav, main, article, section, aside, and footer are all semantic elements.
@@ -80,6 +86,7 @@ Using semantic HTML has several benefits:
         'title': 'Database Design Best Practices',
         'short_description': 'Learn the fundamentals of database design and how to structure your data efficiently.',
         'slug': 'database-design-best-practices',
+        'category': 'Database',
         'content': '''Database design is a crucial aspect of software development. A well-designed database ensures data integrity, improves performance, and makes your application easier to maintain.
 
 Here are some best practices to follow when designing your database:
@@ -101,6 +108,7 @@ By following these practices, you will create databases that are efficient, main
         'title': 'Introduction to REST APIs with Django REST Framework',
         'short_description': 'Build powerful and scalable REST APIs using Django REST Framework.',
         'slug': 'rest-apis-django-rest-framework',
+        'category': 'API',
         'content': '''Django REST Framework (DRF) is a powerful and flexible toolkit for building Web APIs in Django. It provides a set of tools and conventions that make it easy to build RESTful APIs.
 
 Why use Django REST Framework?
@@ -146,12 +154,27 @@ class Command(BaseCommand):
         else:
             self.stdout.write(f'Superuser already exists: {SUPERUSER_EMAIL}')
 
+        # ── Create categories ──
+        category_map = {}
+        for cat_name in CATEGORIES:
+            cat, created = Category.objects.get_or_create(
+                name=cat_name,
+                defaults={'slug': cat_name.lower().replace('/', '').replace(' ', '-')},
+            )
+            category_map[cat_name] = cat
+            if created:
+                self.stdout.write(self.style.SUCCESS(f'Category created: {cat_name}'))
+
         # ── Create blog posts ──
         for data in BLOG_POSTS:
+            cat_name = data.pop('category', None)
             obj, created = Blog.objects.get_or_create(
                 slug=data['slug'],
                 defaults=data,
             )
+            if cat_name and obj.category != category_map.get(cat_name):
+                obj.category = category_map.get(cat_name)
+                obj.save()
             if created:
                 self.stdout.write(self.style.SUCCESS(f'Blog created: {data["title"]}'))
             else:

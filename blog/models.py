@@ -2,12 +2,28 @@ from django.db import models
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
 
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "Categories"
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
 class Blog(models.Model):
     title = models.CharField(max_length=255)
     short_description = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, blank=False, null=False)
     content = RichTextField()
     image = models.ImageField(upload_to="blog/", null=True, blank=True)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True, related_name='blogs')
     status = models.CharField(choices={
         'Published': 'Published',
         'Unpublished': 'Unpublished'

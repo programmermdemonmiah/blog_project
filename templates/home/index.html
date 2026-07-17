@@ -65,6 +65,46 @@
     </div>
 </section>
 
+<section class="categories-slider-section py-5">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <span class="section-badge">Browse Topics</span>
+            <h2 class="section-title">Explore <span class="highlight">Categories</span></h2>
+            <p class="section-text">Find the perfect topic that matches your interest.</p>
+        </div>
+
+        <div class="categories-slider-wrapper">
+            <button class="slider-btn slider-btn-prev" onclick="slideCategories(-1)"><i class="fas fa-chevron-left"></i></button>
+            <div class="categories-slider" id="categoriesSlider">
+                {% for cat in categories %}
+                <a href="{% url 'blog:blog_by_category' cat.slug %}" class="category-slide-card">
+                    <div class="category-slide-icon">
+                        {% if cat.name == 'Python' %}
+                        <i class="fab fa-python"></i>
+                        {% elif cat.name == 'Django' %}
+                        <i class="fas fa-code"></i>
+                        {% elif cat.name == 'Web Development' %}
+                        <i class="fas fa-globe"></i>
+                        {% elif cat.name == 'Database' %}
+                        <i class="fas fa-database"></i>
+                        {% elif cat.name == 'HTML/CSS' %}
+                        <i class="fab fa-html5"></i>
+                        {% elif cat.name == 'API' %}
+                        <i class="fas fa-plug"></i>
+                        {% else %}
+                        <i class="fas fa-folder"></i>
+                        {% endif %}
+                    </div>
+                    <h5 class="category-slide-name">{{ cat.name }}</h5>
+                    <span class="category-slide-count">{{ cat.blogs.count }} article{{ cat.blogs.count|pluralize }}</span>
+                </a>
+                {% endfor %}
+            </div>
+            <button class="slider-btn slider-btn-next" onclick="slideCategories(1)"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+</section>
+
 <section class="features-section py-5">
     <div class="container">
         <div class="row g-4">
@@ -118,8 +158,11 @@
                         </div>
                     </div>
                     <div class="blog-card-body">
-                        <div class="blog-card-meta">
+                        <div class="blog-card-meta d-flex justify-content-between align-items-center">
                             <span class="blog-date"><i class="far fa-calendar-alt"></i> {{ post.created_at|date:"M d, Y" }}</span>
+                            {% if post.category %}
+                            <a href="{% url 'blog:blog_by_category' post.category.slug %}" class="category-badge">{{ post.category.name }}</a>
+                            {% endif %}
                         </div>
                         <h3 class="blog-card-title">
                             <a href="{% url 'blog:blog_detail' post.slug %}">{{ post.title }}</a>

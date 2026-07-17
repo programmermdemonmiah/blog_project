@@ -12,8 +12,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'blog:blog_list' %}">Blog</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{% url 'blog:blog_list' %}" role="button" data-bs-toggle="dropdown">
+                            Blog
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="{% url 'blog:blog_list' %}">All Posts</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            {% for cat in categories %}
+                            <li><a class="dropdown-item" href="{% url 'blog:blog_by_category' cat.slug %}">{{ cat.name }}</a></li>
+                            {% empty %}
+                            <li><a class="dropdown-item disabled" href="#">No categories</a></li>
+                            {% endfor %}
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/about/">About</a>
